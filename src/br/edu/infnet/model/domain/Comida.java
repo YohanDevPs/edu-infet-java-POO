@@ -6,8 +6,8 @@ public class Comida extends Produto{
 	private boolean vegano;
 	private String ingredientes;
 	
-	
-	public Comida(float peso, boolean vegano, String ingredientes) {
+	public Comida(String nome, float valor, int codigo, float peso, boolean vegano, String ingredientes) {
+		super(nome, valor, codigo);
 		this.peso = peso;
 		this.vegano = vegano;
 		this.ingredientes = ingredientes;
@@ -35,8 +35,5 @@ public class Comida extends Produto{
 	
 	public void setIngredientes(String ingredientes) {
 		this.ingredientes = ingredientes;
-	}
-	
-	
-	
+	}	
 }

@@ -6,6 +6,12 @@ public abstract class Produto {
 	private float valor;
 	private int codigo;
 	
+	public Produto(String nome, float valor, int codigo) {
+		this.nome = nome;
+		this.valor = valor;
+		this.codigo = codigo;
+	}
+
 	public String getNome() {
 		return nome;
 	}
