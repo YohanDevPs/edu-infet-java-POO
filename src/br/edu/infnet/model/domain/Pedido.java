@@ -11,6 +11,9 @@ public class Pedido {
 	private List<Produto> products;
 	private Solicitante solicitante;
 	
+	public Pedido() {
+	}
+
 	public Pedido(String descricao, LocalDateTime data, boolean web, List<Produto> products, Solicitante solicitante) {
 		this.descricao = descricao;
 		this.data = data;
@@ -41,7 +44,7 @@ public class Pedido {
 
 	public void setWeb(boolean web) {
 		this.web = web;
-	}
+	}	
 
 	public List<Produto> getProducts() {
 		return products;
@@ -57,5 +60,11 @@ public class Pedido {
 
 	public void setSolicitante(Solicitante solicitante) {
 		this.solicitante = solicitante;
+	}
+
+	@Override
+	public String toString() {
+		return "Pedido [descricao=" + descricao + ", data=" + data + ", web=" + web + ", products=" + products
+				+ ", solicitante=" + solicitante + "]";
 	}
 }

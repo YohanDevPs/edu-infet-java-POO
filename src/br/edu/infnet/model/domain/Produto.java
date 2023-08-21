@@ -11,6 +11,8 @@ public abstract class Produto {
 		this.valor = valor;
 		this.codigo = codigo;
 	}
+	
+	public abstract float calcularValorTotal();
 
 	public String getNome() {
 		return nome;

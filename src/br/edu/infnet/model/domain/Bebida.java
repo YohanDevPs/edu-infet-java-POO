@@ -12,6 +12,11 @@ public class Bebida extends Produto{
 		this.tamanho = tamanho;
 		this.marca = marca;
 	}
+	
+	@Override
+	public float calcularValorTotal() {
+		return isGelada() ? getValor() + 2 : getValor();
+	}
 
 	public boolean isGelada() {
 		return gelada;
@@ -35,5 +40,10 @@ public class Bebida extends Produto{
 	
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+
+	@Override
+	public String toString() {
+		return "Bebida [gelada=" + gelada + ", tamanho=" + tamanho + ", marca=" + marca + "]";
 	}
 }

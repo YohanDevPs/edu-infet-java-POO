@@ -13,6 +13,12 @@ public class Sobremesa extends Produto{
 		this.informacao = informacao;
 	}
 
+	@Override
+	public float calcularValorTotal() {
+	    float valorTotal = getValor() * getQuantidade();      	        
+	    return isDoce() ? valorTotal * 1.2f : valorTotal;
+	}
+
 	public float getQuantidade() {
 		return quantidade;
 	}
@@ -35,5 +41,10 @@ public class Sobremesa extends Produto{
 
 	public void setInformacao(String informacao) {
 		this.informacao = informacao;
+	}
+
+	@Override
+	public String toString() {
+		return "Sobremesa [quantidade=" + quantidade + ", doce=" + doce + ", informacao=" + informacao + "]";
 	}
 }

@@ -6,6 +6,9 @@ public class Solicitante {
 	private String cpf;
 	private String email;
 	
+	public Solicitante() {
+	}
+
 	public Solicitante(String nome, String cpf, String email) {
 		this.nome = nome;
 		this.cpf = cpf;

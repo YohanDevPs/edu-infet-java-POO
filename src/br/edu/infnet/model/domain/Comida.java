@@ -12,7 +12,13 @@ public class Comida extends Produto{
 		this.vegano = vegano;
 		this.ingredientes = ingredientes;
 	}
-
+	
+	@Override
+	public float calcularValorTotal() {
+		float valorTotal = getPeso() * getValor();
+		return isVegano() ? valorTotal + 5 : valorTotal;	
+	}
+	
 	public float getPeso() {
 		return peso;
 	}
@@ -35,5 +41,10 @@ public class Comida extends Produto{
 	
 	public void setIngredientes(String ingredientes) {
 		this.ingredientes = ingredientes;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Comida [peso=" + peso + ", vegano=" + vegano + ", ingredientes=" + ingredientes + "]";
+	}
 }
