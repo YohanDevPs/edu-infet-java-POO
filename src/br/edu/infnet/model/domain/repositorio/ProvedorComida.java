@@ -7,7 +7,7 @@ import br.edu.infnet.model.domain.Comida;
 
 public class ProvedorComida {
 
-	public Set<Comida> pegarComidasVeganas() {
+	public static Set<Comida> pegarComidasVeganas() {
 		Set<Comida> comidasVeganas = new HashSet<>();
 		comidasVeganas.add(new Comida("Escondidinho de Mandioquinha com Shimeji e Quinoa", 
 				50f, 
@@ -69,7 +69,7 @@ public class ProvedorComida {
 		return comidasVeganas;	
 	}
 	
-	public Set<Comida> pegarComidasNaoVeganas() {
+	public static Set<Comida> pegarComidasNaoVeganas() {
 		Set<Comida> comidasNaoVeganas = new HashSet<>();
 		comidasNaoVeganas.add(new Comida("Poke", 40f, 4, 300f, false, 
 				"150 gramas de atum cortado em cubos\n"

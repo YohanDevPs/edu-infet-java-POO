@@ -1,27 +1,39 @@
 package br.edu.infnet.model.domain;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Pedido {
 	
 	private String descricao;
 	private LocalDateTime data;
 	private boolean web;
-	private List<Produto> products;
+	private Produto[] produtos;
 	private Solicitante solicitante;
 	
 	public Pedido() {
+		this.produtos = new Produto[0];
 	}
 
-	public Pedido(String descricao, LocalDateTime data, boolean web, List<Produto> products, Solicitante solicitante) {
+	public Pedido(String descricao, LocalDateTime data, boolean web, Produto[] produtos, Solicitante solicitante) {
 		this.descricao = descricao;
 		this.data = data;
 		this.web = web;
-		this.products = products;
+		this.produtos = new Produto[0];
 		this.solicitante = solicitante;
 	}
 
+	public void adicionarProduto(Produto novoProduto) {
+        Produto[] novoArray = new Produto[produtos.length + 1];
+       
+        for (int i = 0; i < produtos.length; i++) {
+            novoArray[i] = produtos[i];
+        }
+        
+        novoArray[produtos.length] = novoProduto;
+        
+        produtos = novoArray;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -46,12 +58,12 @@ public class Pedido {
 		this.web = web;
 	}	
 
-	public List<Produto> getProducts() {
-		return products;
+	public Produto[] getProdutos() {
+		return produtos;
 	}
 
-	public void setProducts(List<Produto> products) {
-		this.products = products;
+	public void setProdutos(Produto[] produtos) {
+		this.produtos = produtos;
 	}
 
 	public Solicitante getSolicitante() {
@@ -64,7 +76,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [descricao=" + descricao + ", data=" + data + ", web=" + web + ", products=" + products
+		return "Pedido [descricao=" + descricao + ", data=" + data + ", web=" + web + ", products=" + produtos
 				+ ", solicitante=" + solicitante + "]";
 	}
 }
