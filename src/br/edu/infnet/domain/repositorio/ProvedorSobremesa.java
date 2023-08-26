@@ -1,14 +1,14 @@
 package br.edu.infnet.domain.repositorio;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import br.edu.infnet.domain.entidades.Sobremesa;
 
 public class ProvedorSobremesa {
 	
 	public static Set<Sobremesa> pegarSobremesasDoces() {
-		Set<Sobremesa> sobremesasDoces = new HashSet<>();
+		Set<Sobremesa> sobremesasDoces = new TreeSet<>();
 		
 		sobremesasDoces.add(new Sobremesa("Bolo de chocolate", 20f, 1, 1, true,
 				"Uma fatia de bolo de chocolate com uma espessa e generosa calda de chocolate"));
@@ -23,7 +23,7 @@ public class ProvedorSobremesa {
 	}
 	
 	public static Set<Sobremesa> pegarSobremesasSalgadas() {
-		Set<Sobremesa> sobremesasSalgadas = new HashSet<>();
+		Set<Sobremesa> sobremesasSalgadas = new TreeSet<>();
 		
 		sobremesasSalgadas.add(new Sobremesa("Torta Salgada de Banana", 27f, 4, 1, false,
 				"Deliciosa torta de banana. Feita no forno"));

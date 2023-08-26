@@ -1,14 +1,14 @@
 package br.edu.infnet.domain.repositorio;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import br.edu.infnet.domain.entidades.Comida;
 
 public class ProvedorComida {
 
 	public static Set<Comida> pegarComidasVeganas() {
-		Set<Comida> comidasVeganas = new HashSet<>();
+		Set<Comida> comidasVeganas = new TreeSet<>();
 		comidasVeganas.add(new Comida("Escondidinho de Mandioquinha com Shimeji e Quinoa", 
 				50f, 
 				1, 
@@ -70,7 +70,7 @@ public class ProvedorComida {
 	}
 	
 	public static Set<Comida> pegarComidasNaoVeganas() {
-		Set<Comida> comidasNaoVeganas = new HashSet<>();
+		Set<Comida> comidasNaoVeganas = new TreeSet<>();
 		comidasNaoVeganas.add(new Comida("Poke", 40f, 4, 300f, false, 
 				"150 gramas de atum cortado em cubos\n"
 				+ "1/2 cebola cortada em cubos bem pequenos\n"

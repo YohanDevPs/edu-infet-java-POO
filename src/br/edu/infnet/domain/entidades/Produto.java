@@ -1,6 +1,6 @@
 package br.edu.infnet.domain.entidades;
 
-public abstract class Produto {
+public abstract class Produto implements Comparable<Produto>{
 	
 	private String nome;
 	private float valor;
@@ -38,6 +38,11 @@ public abstract class Produto {
 		this.codigo = codigo;
 	}
 
+	@Override
+	public int compareTo(Produto outroProduto) {
+	    return Integer.compare(this.codigo, outroProduto.codigo);
+	}
+	
 	@Override
 	public String toString() {
 		return nome + ", valor R$ " + valor + ", codigo = " + codigo;

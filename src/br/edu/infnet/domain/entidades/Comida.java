@@ -1,6 +1,6 @@
 package br.edu.infnet.domain.entidades;
 
-public class Comida extends Produto{
+public class Comida extends Produto {
 	
 	private float peso;
 	private boolean vegano;
