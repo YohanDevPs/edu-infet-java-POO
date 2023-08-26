@@ -14,6 +14,10 @@ import br.edu.infnet.domain.entidades.Pedido;
 import br.edu.infnet.domain.entidades.Produto;
 import br.edu.infnet.domain.entidades.Sobremesa;
 import br.edu.infnet.domain.entidades.Solicitante;
+import br.edu.infnet.domain.excessoes.ExcessaoBebida;
+import br.edu.infnet.domain.excessoes.ExcessaoComida;
+import br.edu.infnet.domain.excessoes.ExcessaoSobremesa;
+import br.edu.infnet.domain.excessoes.ExcessaoSolicitante;
 import br.edu.infnet.domain.repositorio.ProvedorBebida;
 import br.edu.infnet.domain.repositorio.ProvedorComida;
 import br.edu.infnet.domain.repositorio.ProvedorSobremesa;
@@ -27,10 +31,12 @@ public class ServicoPedido {
 		Pedido pedido = new Pedido();		
 		String diretorioArquivoSolicitante = pegarCaminhoPeloDialog();
 		try {	
-			pedido.setSolicitante(pegarSolicitante(diretorioArquivoSolicitante));
+			Solicitante solicitante = pegarSolicitante(diretorioArquivoSolicitante);
+			verificarCamposSolicitante(solicitante);
+			pedido.setSolicitante(solicitante);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} 
 				
 		System.out.print("O pedido será feito pela web(s/n)?  ");
 		String pedidoFeitoPorWeb = sc.nextLine();
@@ -71,6 +77,12 @@ public class ServicoPedido {
 		return solicitante;
 	}
 	
+	 private static void verificarCamposSolicitante(Solicitante solicitante) {
+	    if (solicitante.getNome().isEmpty() || solicitante.getCpf().isEmpty() || solicitante.getEmail().isEmpty()) {
+	      throw new ExcessaoSolicitante("Todos os campos do solicitante devem estar preenchidos");
+	    }
+	 }
+	 
 	private static void adicionarProdutos(Scanner sc, Pedido pedido) {	
 		pedido.adicionarProduto(pedirComida(sc));
 		pedido.adicionarProduto(pedirBebida(sc));
@@ -119,7 +131,7 @@ public class ServicoPedido {
 		}
 		
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + tipoSobremesa);
+			throw new ExcessaoSobremesa("Sobremesa não encontrada");
 		}
 	}
 
@@ -129,7 +141,8 @@ public class ServicoPedido {
 		
 		String tipoComida = sc.nextLine();
 		
-		if(tipoComida.equals("comida vegana")) {
+		switch (tipoComida) {
+		case "comida vegana": {
 			System.out.println("Digite o codigo da comida vegana que deseja. "
 						+ "Temos as seguintes opções: ");
 			Set<Comida> comidasVeganas = ProvedorComida.pegarComidasVeganas();
@@ -145,7 +158,8 @@ public class ServicoPedido {
 					.filter(c -> c.getCodigo() == codigoComida)
 					.findAny()
 					.get();
-		} else {
+		}
+		case "comida nao vegana": {
 			System.out.println("Digite o codigo da comida não vegana que deseja. "
 					+ "Temos as seguintes opções: ");
 			
@@ -163,6 +177,10 @@ public class ServicoPedido {
 					.findAny()
 					.get();
 			}
+		
+		default:
+			throw new ExcessaoComida("Comida não encontrada");
+		}
 	}
 	
 	private static Bebida pedirBebida(Scanner sc) {
@@ -179,7 +197,7 @@ public class ServicoPedido {
 		Bebida bebidaSelecionada = bebidas.stream()
 				.filter(c -> c.getCodigo() == codigoComida)
 				.findAny()
-				.get();
+				.orElseThrow(() ->  new ExcessaoBebida("Bebida não encontrada"));
 		
 		
 		System.out.print("Deseja que essa bebida seja gelada? (s/n) ");
