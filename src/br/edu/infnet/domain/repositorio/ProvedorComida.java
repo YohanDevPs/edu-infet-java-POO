@@ -1,9 +1,9 @@
-package br.edu.infnet.model.domain.repositorio;
+package br.edu.infnet.domain.repositorio;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import br.edu.infnet.model.domain.Comida;
+import br.edu.infnet.domain.entidades.Comida;
 
 public class ProvedorComida {
 

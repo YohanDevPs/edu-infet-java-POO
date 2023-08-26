@@ -1,4 +1,4 @@
-package br.edu.infnet.model.domain;
+package br.edu.infnet.domain.entidades;
 
 public abstract class Produto {
 	
@@ -36,5 +36,10 @@ public abstract class Produto {
 	
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+
+	@Override
+	public String toString() {
+		return nome + ", valor R$ " + valor + ", codigo = " + codigo;
 	}
 }

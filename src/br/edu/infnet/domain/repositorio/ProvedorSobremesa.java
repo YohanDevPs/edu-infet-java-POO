@@ -1,9 +1,9 @@
-package br.edu.infnet.model.domain.repositorio;
+package br.edu.infnet.domain.repositorio;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import br.edu.infnet.model.domain.Sobremesa;
+import br.edu.infnet.domain.entidades.Sobremesa;
 
 public class ProvedorSobremesa {
 	
@@ -18,15 +18,6 @@ public class ProvedorSobremesa {
 		
 		sobremesasDoces.add(new Sobremesa("Bem-casado", 35f, 3, 1, true, 
 				"Doce popular. Seu aspecto é semenhante a um biscoito, com recheio e calda de doce de leite"));
-		
-		sobremesasDoces.add(new Sobremesa("Torta Salgada de Banana", 27f, 4, 1, false,
-				"Deliciosa torta de banana. Feita no forno"));
-
-		sobremesasDoces.add(new Sobremesa("Bolo Salgado De Polvilho", 26f, 5, 1, false, 
-				"Bolo de polvilho. Gosto de receita de vó, perfeito com café"));
-		
-		sobremesasDoces.add(new Sobremesa("Tortinha de alho", 35f, 6, 1, false, 
-				"Pequena torta de alho bem temperada"));
 		
 		return sobremesasDoces;	
 	}

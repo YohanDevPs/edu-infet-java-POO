@@ -1,6 +1,8 @@
-package br.edu.infnet.model.domain;
+package br.edu.infnet.domain.entidades;
 
 import java.time.LocalDateTime;
+
+import br.edu.infnet.domain.utilidades.TempoConversores;
 
 public class Pedido {
 	
@@ -32,6 +34,16 @@ public class Pedido {
         novoArray[produtos.length] = novoProduto;
         
         produtos = novoArray;
+	}
+	
+	public float valorTotalPedido() {
+        float valorTotalPedido = 0;
+        
+        for (int i = 0; i < produtos.length; i++) {
+			valorTotalPedido += this.produtos[i].getValor();
+		}
+        
+        return valorTotalPedido;
 	}
 	
 	public String getDescricao() {
@@ -76,7 +88,16 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [descricao=" + descricao + ", data=" + data + ", web=" + web + ", products=" + produtos
-				+ ", solicitante=" + solicitante + "]";
+		return "Informações do solicitante:\n" + solicitante
+				+ "\n\nInformações do Pedido: "
+					+ "\nDescrição: " + descricao
+					+ "\nData do pedido: " + TempoConversores.formatLocalDateTime(data) 
+					+ "\nFeito pela web: " + (web ? "Sim" : "Não")
+					+ "\nProdutos comprados:\n"
+					+ String.format("Comida: %d - %s: R$: %.2f\n", produtos[0].getCodigo(), produtos[0].getNome(), produtos[0].getValor())
+					+ String.format("Bebida: %d - %s: R$: %.2f\n", produtos[1].getCodigo(), produtos[1].getNome(), produtos[1].getValor())
+					+ String.format("Sobremesa: %d - %s: R$: %.2f\n", produtos[2].getCodigo(), produtos[2].getNome(), produtos[2].getValor())
+					+ String.format("Preço total:  %.2f", valorTotalPedido());
+		
 	}
 }

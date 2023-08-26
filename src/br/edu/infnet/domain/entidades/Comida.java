@@ -1,4 +1,4 @@
-package br.edu.infnet.model.domain;
+package br.edu.infnet.domain.entidades;
 
 public class Comida extends Produto{
 	

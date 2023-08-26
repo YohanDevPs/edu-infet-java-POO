@@ -1,4 +1,4 @@
-package br.edu.infnet.model.domain;
+package br.edu.infnet.domain.entidades;
 
 public class Solicitante {
 	
@@ -37,5 +37,10 @@ public class Solicitante {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Nome: " + nome + "\ncpf: " + cpf + "\ne-mail: " + email;
 	}
 }
